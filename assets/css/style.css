@@ -547,6 +547,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 	}
 }
 
+/* Hide User Avatar on mobile */
+@media (max-width: 992px) {
+	#user-avatar {
+		display: none;
+	}
+}
+
 /* ==================================================
   Welcome Styling
   ================================================== */
@@ -554,7 +561,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	color: #fff;
 	height: 300px;
 	overflow: hidden;
-	padding-top: 80px;
+	padding-top: 20px;
 	background: url('../img/parallax-bg.jpg') center top no-repeat;
 }
 
