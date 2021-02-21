@@ -132,3 +132,63 @@ Highcharts.chart('leetcode-problems-solved-chart', {
 		},
 	],
 });
+
+const leetCodeTotalSubmissions = _.get(LeetCodeUserData, [
+	'data',
+	'matchedUser',
+	'submitStats',
+	'totalSubmissionNum',
+	0,
+	'submissions',
+]);
+const leetCodeSubmissionStatsString = _.get(LeetCodeUserData, [
+	'data',
+	'matchedUser',
+	'submissionCalendar',
+]);
+const leetCodeSubmissionStatsObject = JSON.parse(leetCodeSubmissionStatsString);
+const leetCodeAvailableSubmissionTimeStamps = Object.keys(
+	leetCodeSubmissionStatsObject,
+).sort();
+const leetCodeSubmissionStatsData = [];
+for (let i = 0; i < leetCodeAvailableSubmissionTimeStamps.length; i++) {
+	leetCodeSubmissionStatsData.push([
+		parseInt(leetCodeAvailableSubmissionTimeStamps[i]) * 1000,
+		parseInt(
+			leetCodeSubmissionStatsObject[leetCodeAvailableSubmissionTimeStamps[i]],
+		),
+	]);
+}
+Highcharts.chart('leetcode-submissions-stat-time-series-chart', {
+	chart: {
+		zoomType: 'x',
+	},
+	title: {
+		text: `${leetCodeTotalSubmissions} submissions in the last year`,
+	},
+	subtitle: {
+		text:
+			document.ontouchstart === undefined
+				? 'Click and drag in the plot area to zoom in'
+				: 'Pinch the chart to zoom in',
+	},
+	xAxis: {
+		type: 'datetime',
+	},
+	yAxis: {
+		title: {
+			text: 'Submissions',
+		},
+	},
+	legend: {
+		enabled: false,
+	},
+	series: [
+		{
+			type: 'area',
+			name: 'Problems submitted',
+			data: leetCodeSubmissionStatsData,
+			color: '#199eb8',
+		},
+	],
+});
