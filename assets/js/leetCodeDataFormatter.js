@@ -1,5 +1,8 @@
 'use-strict';
 
+const windowWidth = $(window).width();
+console.info(windowWidth);
+
 const leetCodeRanking = _.get(LeetCodeUserData, [
 	'data',
 	'matchedUser',
@@ -74,64 +77,70 @@ const leetCodeHardProblems = _.get(LeetCodeUserData, [
 	'count',
 ]);
 
-Highcharts.chart('leetcode-problems-solved-chart', {
-	chart: {
-		type: 'column',
-	},
-	title: {
-		text: 'Problems Solved',
-	},
-	xAxis: {
-		categories: ['All', 'Easy', 'Medium', 'Hard'],
-	},
-	yAxis: [
-		{
-			min: 0,
-			title: {
-				text: 'Problems',
+const leetCodeProblemsSolvedChart = Highcharts.chart(
+	'leetcode-problems-solved-chart',
+	{
+		chart: {
+			type: 'column',
+		},
+		title: {
+			text: 'Problems Solved',
+		},
+		xAxis: {
+			categories: ['All', 'Easy', 'Medium', 'Hard'],
+		},
+		yAxis: [
+			{
+				min: 0,
+				title: {
+					text: 'Problems',
+				},
+			},
+		],
+		legend: {
+			shadow: true,
+		},
+		tooltip: {
+			shared: true,
+		},
+		plotOptions: {
+			column: {
+				grouping: false,
+				shadow: false,
+				borderWidth: 0,
 			},
 		},
-	],
-	legend: {
-		shadow: true,
+		series: [
+			{
+				name: 'Total',
+				color: '#6CC1D1',
+				data: [
+					leetCodeAllProblems,
+					leetCodeEasyProblems,
+					leetCodeMediumProblems,
+					leetCodeHardProblems,
+				],
+				pointPadding: 0.3,
+				pointPlacement: 0,
+			},
+			{
+				name: 'Solved',
+				color: '#106576',
+				data: [
+					leetCodeAllProblemsSolved,
+					leetCodeEasyProblemsSolved,
+					leetCodeMediumProblemsSolved,
+					leetCodeHardProblemsSolved,
+				],
+				pointPadding: 0.4,
+				pointPlacement: 0,
+			},
+		],
 	},
-	tooltip: {
-		shared: true,
-	},
-	plotOptions: {
-		column: {
-			grouping: false,
-			shadow: false,
-			borderWidth: 0,
-		},
-	},
-	series: [
-		{
-			name: 'Total',
-			color: '#6CC1D1',
-			data: [
-				leetCodeAllProblems,
-				leetCodeEasyProblems,
-				leetCodeMediumProblems,
-				leetCodeHardProblems,
-			],
-			pointPadding: 0.3,
-			pointPlacement: 0,
-		},
-		{
-			name: 'Solved',
-			color: '#106576',
-			data: [
-				leetCodeAllProblemsSolved,
-				leetCodeEasyProblemsSolved,
-				leetCodeMediumProblemsSolved,
-				leetCodeHardProblemsSolved,
-			],
-			pointPadding: 0.4,
-			pointPlacement: 0,
-		},
-	],
-});
+);
+if (windowWidth < 768) {
+	leetCodeProblemsSolvedChart.setSize(windowWidth - 50, 350);
+}
 
 const leetCodeTotalSubmissions = _.get(LeetCodeUserData, [
 	'data',
@@ -159,36 +168,42 @@ for (let i = 0; i < leetCodeAvailableSubmissionTimeStamps.length; i++) {
 		),
 	]);
 }
-Highcharts.chart('leetcode-submissions-stat-time-series-chart', {
-	chart: {
-		zoomType: 'x',
-	},
-	title: {
-		text: `${leetCodeTotalSubmissions} submissions in the last year`,
-	},
-	subtitle: {
-		text:
-			document.ontouchstart === undefined
-				? 'Click and drag in the plot area to zoom in'
-				: 'Pinch the chart to zoom in',
-	},
-	xAxis: {
-		type: 'datetime',
-	},
-	yAxis: {
+const leetCodeSubmissionsStatTimeSeriesChart = Highcharts.chart(
+	'leetcode-submissions-stat-time-series-chart',
+	{
+		chart: {
+			zoomType: 'x',
+		},
 		title: {
-			text: 'Submissions',
+			text: `${leetCodeTotalSubmissions} submissions in the last year`,
 		},
-	},
-	legend: {
-		enabled: false,
-	},
-	series: [
-		{
-			type: 'area',
-			name: 'Problems submitted',
-			data: leetCodeSubmissionStatsData,
-			color: '#199eb8',
+		subtitle: {
+			text:
+				document.ontouchstart === undefined
+					? 'Click and drag in the plot area to zoom in'
+					: 'Pinch the chart to zoom in',
 		},
-	],
-});
+		xAxis: {
+			type: 'datetime',
+		},
+		yAxis: {
+			title: {
+				text: 'Submissions',
+			},
+		},
+		legend: {
+			enabled: false,
+		},
+		series: [
+			{
+				type: 'area',
+				name: 'Problems submitted',
+				data: leetCodeSubmissionStatsData,
+				color: '#199eb8',
+			},
+		],
+	},
+);
+if (windowWidth < 768) {
+	leetCodeSubmissionsStatTimeSeriesChart.setSize(windowWidth - 50, 350);
+}
