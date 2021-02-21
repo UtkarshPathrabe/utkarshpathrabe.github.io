@@ -1,7 +1,6 @@
 'use-strict';
 
 const windowWidth = $(window).width();
-console.info(windowWidth);
 
 const leetCodeRanking = _.get(LeetCodeUserData, [
 	'data',
