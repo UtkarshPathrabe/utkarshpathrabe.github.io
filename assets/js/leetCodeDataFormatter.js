@@ -120,7 +120,7 @@ Highcharts.chart('leetcode-problems-solved-chart', {
 		},
 		{
 			name: 'Solved',
-			color: '#0D515E',
+			color: '#106576',
 			data: [
 				leetCodeAllProblemsSolved,
 				leetCodeEasyProblemsSolved,
