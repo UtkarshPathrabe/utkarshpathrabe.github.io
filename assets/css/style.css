@@ -112,6 +112,11 @@ a:hover {
 	opacity: 0.75;
 }
 
+svg.highcharts-root {
+	min-width: 300px !important;
+	font-family: 'Raleway', Helvetica, Arial, sans-serif !important;
+}
+
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
