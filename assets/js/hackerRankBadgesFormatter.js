@@ -22,7 +22,6 @@ hackerRankBadgesImagesURL['/domains/c'] =
 
 const hackerRankBadgesNode = document.querySelector('#hackerrank-badge');
 const hackerRankBadgesDataModels = hackerRankBadgesData.models;
-console.log(hackerRankBadgesNode, hackerRankBadgesData);
 
 const getHackerRankLevel = (level) => {
 	switch (level) {
