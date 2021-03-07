@@ -20,9 +20,6 @@ hackerRankBadgesImagesURL['/domains/sql'] =
 hackerRankBadgesImagesURL['/domains/c'] =
 	'https://hrcdn.net/community-frontend/assets/badges/c-d1985901e6.svg';
 
-const hackerRankBadgesNode = document.querySelector('#hackerrank-badge');
-const hackerRankBadgesDataModels = hackerRankBadgesData.models;
-
 const getHackerRankLevel = (level) => {
 	switch (level) {
 		case 3:
@@ -59,19 +56,37 @@ const getStarsIcons = (stars, color) => {
 	return starIcons.join('');
 };
 
-hackerRankBadgesDataModels.forEach((data) => {
-	if (data.solved > 0 && data.level > 0) {
-		const divNode = document.createElement('div');
-		divNode.classList.add('col-lg-4');
-		divNode.classList.add('col-md-6');
-		divNode.classList.add('col-sm-12');
-		divNode.classList.add('col-xs-12');
-		divNode.innerHTML = `<div class="card card-block">
+const hackerRankBadgesNode = document.querySelector('#hackerrank-badge');
+
+async function populateHackerRankBadges() {
+	const hackerRankBadgesData = await fetch(
+		'https://nodejs-server-githubio-page.herokuapp.com/hackerrank_badges',
+	)
+		.then((response) => response.json())
+		.catch((error) => {
+			console.error(
+				'Error while fetching /hackerrank_badges data. Details: ',
+				error,
+			);
+			return {
+				status: true,
+				models: [],
+				version: 2,
+			};
+		});
+	hackerRankBadgesData.models.forEach((data) => {
+		if (data.solved > 0 && data.level > 0) {
+			const divNode = document.createElement('div');
+			divNode.classList.add('col-lg-4');
+			divNode.classList.add('col-md-6');
+			divNode.classList.add('col-sm-12');
+			divNode.classList.add('col-xs-12');
+			divNode.innerHTML = `<div class="card card-block">
               <img alt="" class="team-img" src="${
 								hackerRankBadgesImagesURL[data.url]
 							}" height="200px" style="padding: 30px;background: ${getHackerRankLevelColor(
-			data.level,
-		)}">
+				data.level,
+			)}">
               <div class="card-title-wrap">
                 <span class="card-title">${data.badge_name}</span>
               </div>
@@ -87,6 +102,9 @@ hackerRankBadgesDataModels.forEach((data) => {
                 </p>
               </div>
             </div>`;
-		hackerRankBadgesNode.appendChild(divNode);
-	}
-});
+			hackerRankBadgesNode.appendChild(divNode);
+		}
+	});
+}
+
+populateHackerRankBadges();
