@@ -163,3 +163,30 @@ async function populateHackerRankSubmissionsData() {
 }
 
 populateHackerRankSubmissionsData();
+
+const hackerRankScoresNode = document.querySelector('#hackerrank-scores');
+
+async function populateHackerRankScoresList() {
+	const hackerRankScoresData = await fetch(
+		'https://nodejs-server-githubio-page.herokuapp.com/hackerrank_scores',
+	)
+		.then((response) => response.json())
+		.catch((error) => {
+			console.error(
+				'Error while fetching /hackerrank_scores data. Details: ',
+				error,
+			);
+			return [];
+		});
+	hackerRankScoresData.map((scoreData) => {
+		const liNode = document.createElement('li');
+		liNode.classList.add('list-group-item');
+		liNode.classList.add('d-flex');
+		liNode.classList.add('justify-content-between');
+		liNode.classList.add('align-items-center');
+		liNode.innerHTML = `<h5 class="mb-1">${scoreData.name}</h5><small>${scoreData.score}</small>`;
+		hackerRankScoresNode.appendChild(liNode);
+	});
+}
+
+populateHackerRankScoresList();
