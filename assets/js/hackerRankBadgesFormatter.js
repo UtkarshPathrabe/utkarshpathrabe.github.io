@@ -108,3 +108,58 @@ async function populateHackerRankBadges() {
 }
 
 populateHackerRankBadges();
+
+async function populateHackerRankSubmissionsData() {
+	const hackerRankSubmissionsData = await fetch(
+		'https://nodejs-server-githubio-page.herokuapp.com/hackerrank_submission_histories',
+	)
+		.then((response) => response.json())
+		.catch((error) => {
+			console.error(
+				'Error while fetching /hackerrank_submission_histories data. Details: ',
+				error,
+			);
+			return [];
+		});
+	const hackerRankSubmissionsStatTimeSeriesChart = Highcharts.chart(
+		'hackerrank-submissions-stat-time-series-chart',
+		{
+			chart: {
+				zoomType: 'x',
+			},
+			title: {
+				text: 'HackerRank Submissions',
+			},
+			subtitle: {
+				text:
+					document.ontouchstart === undefined
+						? 'Click and drag in the plot area to zoom in'
+						: 'Pinch the chart to zoom in',
+			},
+			xAxis: {
+				type: 'datetime',
+			},
+			yAxis: {
+				title: {
+					text: 'Submissions',
+				},
+			},
+			legend: {
+				enabled: false,
+			},
+			series: [
+				{
+					type: 'area',
+					name: 'Problems submitted',
+					data: hackerRankSubmissionsData,
+					color: '#199eb8',
+				},
+			],
+		},
+	);
+	if (windowWidth < 768) {
+		hackerRankSubmissionsStatTimeSeriesChart.setSize(windowWidth - 50, 350);
+	}
+}
+
+populateHackerRankSubmissionsData();
