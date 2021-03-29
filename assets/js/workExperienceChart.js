@@ -11,7 +11,7 @@ Highcharts.chart('work-experience-timeline-chart', {
 	title: {
 		text: 'Work Experience',
 	},
-	colors: ['#6CC1D1', '#47B1C6', '#199EB8', '#147E93', '#106576'],
+	colors: ['#6CC1D1', '#47B1C6', '#199EB8', '#147E93', '#106576', '#0D515E'],
 	series: [
 		{
 			data: [
@@ -41,7 +41,12 @@ Highcharts.chart('work-experience-timeline-chart', {
 				{
 					name: 'Senior Associate Software Engineer',
 					label: 'J P Morgan Chase & Co., Bengaluru',
-					description: 'Jan 2020 - Present: J P Morgan Chase & Co., Bengaluru',
+					description: 'Jan 2020 - Mar 2021: J P Morgan Chase & Co., Bengaluru',
+				},
+				{
+					name: 'Senior System Software Engineer',
+					label: 'NVIDIA Graphics Pvt. Ltd., Pune',
+					description: 'Mar 2021 - Present: NVIDIA Graphics Pvt. Ltd., Pune',
 				},
 			],
 		},
