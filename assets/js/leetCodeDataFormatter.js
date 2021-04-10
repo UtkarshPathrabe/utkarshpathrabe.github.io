@@ -172,14 +172,45 @@ async function populateLeetCodeData() {
 	const leetCodeAvailableSubmissionTimeStamps = Object.keys(
 		leetCodeSubmissionStatsObject,
 	).sort();
+	const getDateDiffInDays = (date2, date1) =>
+		Math.ceil(
+			Math.abs(new Date(date2 * 1000) - new Date(date1 * 1000)) /
+				(1000 * 60 * 60 * 24),
+		);
 	const leetCodeSubmissionStatsData = [];
 	for (let i = 0; i < leetCodeAvailableSubmissionTimeStamps.length; i++) {
+		if (
+			i > 0 &&
+			getDateDiffInDays(
+				leetCodeAvailableSubmissionTimeStamps[i],
+				leetCodeAvailableSubmissionTimeStamps[i - 1],
+			) > 1
+		) {
+			const currentDate = new Date(
+				leetCodeAvailableSubmissionTimeStamps[i] * 1000,
+			);
+			currentDate.setDate(currentDate.getDate() - 1);
+			leetCodeSubmissionStatsData.push([currentDate.getTime(), 0]);
+		}
 		leetCodeSubmissionStatsData.push([
 			parseInt(leetCodeAvailableSubmissionTimeStamps[i]) * 1000,
 			parseInt(
 				leetCodeSubmissionStatsObject[leetCodeAvailableSubmissionTimeStamps[i]],
 			),
 		]);
+		if (
+			i < leetCodeAvailableSubmissionTimeStamps.length - 1 &&
+			getDateDiffInDays(
+				leetCodeAvailableSubmissionTimeStamps[i + 1],
+				leetCodeAvailableSubmissionTimeStamps[i],
+			) > 1
+		) {
+			const currentDate = new Date(
+				leetCodeAvailableSubmissionTimeStamps[i] * 1000,
+			);
+			currentDate.setDate(currentDate.getDate() + 1);
+			leetCodeSubmissionStatsData.push([currentDate.getTime(), 0]);
+		}
 	}
 	const leetCodeSubmissionsStatTimeSeriesChart = Highcharts.chart(
 		'leetcode-submissions-stat-time-series-chart',
