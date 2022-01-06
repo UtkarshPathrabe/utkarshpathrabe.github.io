@@ -219,7 +219,7 @@ async function populateLeetCodeData() {
 				zoomType: 'x',
 			},
 			title: {
-				text: `${leetCodeTotalSubmissions} submissions in the last year`,
+				text: `${leetCodeTotalSubmissions} Total Submissions`,
 			},
 			subtitle: {
 				text:
