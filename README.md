@@ -1,7 +1,7 @@
 Portfolio
 =========  
 
-[Portfolio Website](https://utkarshpathrabe.github.io/)  
+[Portfolio Website](https://utkarshpathrabe.com/)  
 
 My Portfolio Website  
 
