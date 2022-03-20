@@ -1,11 +1,13 @@
 import React from 'react';
 import { DiBootstrap, DiCss3, DiDatabase, DiGit, DiHeroku, DiHtml5, DiJava, DiJsBadge, DiJira, DiLinux, DiMarkdown, DiMongodb, DiMysql, DiPostgresql, DiPython, DiReact, DiRedis, DiWindows } from 'react-icons/di';
 import { SiBabel, SiBitbucket, SiConfluence, SiCplusplus, SiDjango, SiEclipseide, SiEslint, SiGithub, SiGitlab, SiIntellijidea, SiJenkins, SiKeras, SiLeaflet, SiMaterialUi, SiMocha, SiNodeDotJs, SiNpm, SiNetlify, SiOctave, SiPostman, SiR, SiRedux, SiSocketDotIo, SiSpring, SiSublimetext, SiTypescript, SiVisualstudiocode } from 'react-icons/si';
-import { SectionText } from '../../styles/GlobalComponents';
+import { Section, SectionDivider, SectionText, SectionTitle } from '../../styles/GlobalComponents';
 import { List, ListContainer, ListItem, ListTitle } from './TechnologiesStyles';
 
 const Technologies = () =>  (
-  <>
+  <Section id="tech">
+    <SectionDivider />
+    <SectionTitle main>Technologies</SectionTitle>
     <SectionText>
       {`I've worked on a range of technologies and tools in the software and web development world, be it documentation, work and task tracking, front-end and back-end code development, cloud technology, artificial intelligence and so on...`}
     </SectionText>
@@ -281,7 +283,7 @@ const Technologies = () =>  (
         </ListContainer>
       </ListItem>
     </List>
-  </>
+  </Section>
 );
 
 export default Technologies;
