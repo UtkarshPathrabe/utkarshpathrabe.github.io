@@ -2,13 +2,12 @@ import Head from 'next/head';
 
 import About from '../components/About/About';
 import Accomplishments from '../components/Accomplishments/Accomplishments';
-import Accordion from '../components/Accordion/Accordion';
 import BgAnimation from '../components/BackgroundAnimation/BackgroundAnimation';
 import Hero from '../components/Hero/Hero';
 import Paintings from '../components/Paintings/Paintings';
 import Projects from '../components/Projects/Projects';
 import Technologies from '../components/Technologies/Technologies';
-import Layout, { AccordionContext } from '../layout/Layout';
+import Layout from '../layout/Layout';
 import { Section } from '../styles/GlobalComponents';
 
 const Home = () => {
@@ -28,21 +27,10 @@ const Home = () => {
           <BgAnimation />
         </Section>
         <About />
-        <AccordionContext.Consumer>
-          {(
-            {projectsIsOpen, toggleProjectsIsOpen,
-            technologiesIsOpen, toggleTechnologiesIsOpen,
-            accomplishmentsIsOpen, toggleAccomplishmentsIsOpen,
-            paintingsIsOpen, togglePaintingsIsOpen,
-          }) => (
-            <>
-              <Accordion id={'projects'} title={'Projects'} content={<Projects />} isActive={projectsIsOpen} toggleActive={toggleProjectsIsOpen} />
-              <Accordion id={'tech'} title={'Technologies'} content={<Technologies />} isActive={technologiesIsOpen} toggleActive={toggleTechnologiesIsOpen} />
-              <Accordion id={'accomplishments'} title={'Accomplishments'} content={<Accomplishments />} isActive={accomplishmentsIsOpen} toggleActive={toggleAccomplishmentsIsOpen} />
-              <Accordion id={'paintings'} title={'Paintings'} content={<Paintings />} isActive={paintingsIsOpen} toggleActive={togglePaintingsIsOpen} />
-            </>
-          )}
-        </AccordionContext.Consumer>
+        <Projects />
+        <Technologies />
+        <Accomplishments />
+        <Paintings />
       </Layout>
     </>
   );
