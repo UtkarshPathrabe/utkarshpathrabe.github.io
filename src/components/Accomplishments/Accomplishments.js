@@ -6,6 +6,7 @@ import HackerRank from './HackerRank/HackerRank';
 import SphereOnlineJudge from './SphereOnlineJudge/SphereOnlineJudge';
 import Certificates from './Certificates/Certificates';
 import TestScores from './TestScores/TestScores';
+import { Section, SectionDivider, SectionTitle } from '../../styles/GlobalComponents';
 
 const GitHubData = [
   { number: 20, text: 'Open Source Projects'},
@@ -13,7 +14,9 @@ const GitHubData = [
 ];
 
 const Accomplishments = () => (
-  <>
+  <Section id="accomplishments">
+    <SectionDivider />
+    <SectionTitle main>Accomplishments</SectionTitle>
     <GitHubStatsContainer>
       <GitHubStats src={'https://github-readme-stats.vercel.app/api?username=UtkarshPathrabe&show_icons=true&hide=prs,issues,contribs&theme=github_dark&border_radius=10px&count_private=true'} alt='github_stats' />
       <GitHubMostUsedLanguages src={'https://github-readme-stats.vercel.app/api/top-langs/?username=UtkarshPathrabe&theme=github_dark&border_radius=10px'} alt='github_most_used_languages' />
@@ -31,7 +34,7 @@ const Accomplishments = () => (
     <SphereOnlineJudge />
     <TestScores />
     <Certificates />
-  </>
+  </Section>
 );
 
 export default Accomplishments;
