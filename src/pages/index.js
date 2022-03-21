@@ -1,12 +1,8 @@
 import Head from 'next/head';
 
 import About from '../components/About/About';
-import Accomplishments from '../components/Accomplishments/Accomplishments';
 import BgAnimation from '../components/BackgroundAnimation/BackgroundAnimation';
 import Hero from '../components/Hero/Hero';
-import Paintings from '../components/Paintings/Paintings';
-import Projects from '../components/Projects/Projects';
-import Technologies from '../components/Technologies/Technologies';
 import Layout from '../layout/Layout';
 import { Section } from '../styles/GlobalComponents';
 
@@ -27,10 +23,6 @@ const Home = () => {
           <BgAnimation />
         </Section>
         <About />
-        <Projects />
-        <Technologies />
-        <Accomplishments />
-        <Paintings />
       </Layout>
     </>
   );
