@@ -1,8 +1,8 @@
-Portfolio
-=========  
+GitHub Portfolio
+================  
 
-[Portfolio Website](https://utkarshpathrabe.com/)  
+[GitHub Portfolio Website](https://utkarshpathrabe.github.io/)  
 
-My Portfolio Website  
+My GitHub Portfolio Website  
 
 ![Main Page](./public/images/main_page.png)
