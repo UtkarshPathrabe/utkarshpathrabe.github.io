@@ -1,20 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 import { Section, SectionText, SectionTitle } from '../../styles/GlobalComponents';
 import Button from '../../styles/GlobalComponents/Button';
 import { LeftSection } from './HeroStyles';
-import { ABOUT_URL } from '../../constants/toolbarURLs';
 
-const Hero = (props) => {
-  const audioRef = useRef();
-
-  const handleLearnMore = () => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
-    }
-  }
+const Hero = () => {
 
   return (
     <Section row nopadding>
@@ -25,13 +16,10 @@ const Hero = (props) => {
         <SectionText>
           Senior System Software Engineer (Autonomous Vehicles) at NVIDIA
         </SectionText>
-        <Link href={ABOUT_URL} passHref>
-          <Button onClick={handleLearnMore}>Learn More</Button>
+        <Link href={"https://utkarshpathrabe.com/#about"} passHref>
+          <Button>Learn More</Button>
         </Link>
       </LeftSection>
-      <audio ref={audioRef}>
-        <source src='/audio/guitar-beat-intro.mp3'></source>
-      </audio>
     </Section>
   );
 };
