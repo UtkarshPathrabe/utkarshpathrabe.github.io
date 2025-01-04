@@ -1,5 +1,5 @@
 export const ABOUT_URL = '#about';
-export const PROJECTS_URL = 'https://utkarshpathrabe.com/#projects';
-export const TECHNOLOGIES_URL = 'https://utkarshpathrabe.com/#tech';
-export const ACCOMPLISHMENTS_URL = 'https://utkarshpathrabe.com/#accomplishments';
-export const PAINTINGS_URL = 'https://utkarshpathrabe.com/#paintings';
+export const PROJECTS_URL = 'https://utkarshpathrabe.site/#projects';
+export const TECHNOLOGIES_URL = 'https://utkarshpathrabe.site/#tech';
+export const ACCOMPLISHMENTS_URL = 'https://utkarshpathrabe.site/#accomplishments';
+export const PAINTINGS_URL = 'https://utkarshpathrabe.site/#paintings';
