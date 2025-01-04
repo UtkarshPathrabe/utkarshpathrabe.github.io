@@ -18,7 +18,7 @@ const Home = () => {
         <link href="/images/logo.png" rel="icon"></link>
       </Head>
       <Layout>
-      <Section grid>
+        <Section grid>
           <Hero />
           <BgAnimation />
         </Section>
