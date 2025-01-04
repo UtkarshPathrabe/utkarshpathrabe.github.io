@@ -12,7 +12,7 @@ const About = () => {
       <SectionDivider />
       <SectionTitle main>About Me</SectionTitle>
       <Boxes>
-        <ProfileImg src={'https://avatars.githubusercontent.com/u/7246712?v=4'} alt={'Profile Picture'} />
+        <ProfileImg src={'/images/profile-photo.jpg'} alt={'Profile Picture'} />
         <SectionText style={{ margin: 'auto' }}>
           I am a Senior System Software Engineer at NVIDIA Graphics Pvt. Ltd., Pune, India. <br />
           I am Computer Science Graduate from BITS Pilani, Rajasthan, India. <br />
