@@ -16,7 +16,7 @@ const Hero = () => {
         <SectionText>
           Senior System Software Engineer (Autonomous Vehicles) at NVIDIA
         </SectionText>
-        <a href={"https://utkarshpathrabe.com/#about"} rel="noopener">
+        <a href={"https://utkarshpathrabe.site/#about"} rel="noopener">
           <Button>Learn More</Button>
         </a>
       </LeftSection>
